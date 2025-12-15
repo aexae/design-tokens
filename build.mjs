@@ -29,7 +29,7 @@ await baseSD.buildAllPlatforms();
 
 // 🔍 Charge le fichier de composants
 const componentTokens = JSON.parse(
-  fs.readFileSync("./tokens/components/mobile.json", "utf-8")
+  fs.readFileSync("./tokens/components/tokens.json", "utf-8")
 );
 
 // 🧩 Récupère les noms de composants de premier niveau (ex: button, avatar...)
@@ -42,7 +42,7 @@ for (const theme of ["light", "dark"]) {
       source: [
         "tokens/base/**/*.json",
         `tokens/theme/${theme}.json`,
-        "tokens/components/mobile.json",
+        "tokens/components/tokens.json",
       ],
       platforms: {
         scss: {
