@@ -21,7 +21,8 @@ const baseSD = new StyleDictionary({
       ],
     },
   },
-});
+},
+  { verbosity: "verbose" } );
 
 await baseSD.cleanAllPlatforms();
 await baseSD.buildAllPlatforms();
