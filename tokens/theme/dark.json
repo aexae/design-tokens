@@ -667,6 +667,14 @@
     "pressed": {
       "$type": "color",
       "$value": "#ffffff5c"
+    },
+    "hovered-MEDIAPICKER": {
+      "$type": "color",
+      "$value": "#ffffff33"
+    },
+    "pressed-MEDIAPICKER": {
+      "$type": "color",
+      "$value": "#ffffff5c"
     }
   }
 }

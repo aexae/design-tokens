@@ -123,13 +123,13 @@
       },
       "mask": {
         "$type": "color",
-        "$value": "{neutral-alpha.60}"
+        "$value": "{neutral.500A}"
       },
       "elevation": {
         "sunken": {
           "default": {
             "$type": "color",
-            "$value": "{neutral-alpha.2}"
+            "$value": "{porcelain.50}"
           }
         },
         "overlay": {
@@ -665,6 +665,14 @@
       "$value": "#00000029"
     },
     "pressed": {
+      "$type": "color",
+      "$value": "#00000052"
+    },
+    "hovered-MEDIAPICKER": {
+      "$type": "color",
+      "$value": "#00000029"
+    },
+    "pressed-MEDIAPICKER": {
       "$type": "color",
       "$value": "#00000052"
     }
