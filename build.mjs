@@ -7,22 +7,28 @@ import fs from "node:fs";
 register(StyleDictionary);
 
 // ✅ Génère les tokens de base
-const baseSD = new StyleDictionary({
-  source: ["tokens/base/**/*.json"],
-  platforms: {
-    scss: {
-      transformGroup: transformGroups.scss,
-      buildPath: "./dist/",
-      files: [
-        {
-          destination: "base.scss",
-          format: formats.scssVariables,
-        },
-      ],
+const baseSD = new StyleDictionary(
+  {
+    log: {
+      verbosity: "verbose",
+      warnings: "warn",
+    },
+    source: ["tokens/base/**/*.json"],
+    platforms: {
+      scss: {
+        transformGroup: transformGroups.scss,
+        buildPath: "./dist/",
+        files: [
+          {
+            destination: "base.scss",
+            format: formats.scssVariables,
+          },
+        ],
+      },
     },
   },
-},
-  { verbosity: "verbose" } );
+  { verbosity: "verbose" }
+);
 
 await baseSD.cleanAllPlatforms();
 await baseSD.buildAllPlatforms();
@@ -39,6 +45,10 @@ const components = Object.keys(componentTokens);
 for (const theme of ["light", "dark"]) {
   for (const component of components) {
     const sd = new StyleDictionary({
+      log: {
+        verbosity: "verbose",
+        warnings: "warn",
+      },
       source: [
         "tokens/base/**/*.json",
         `tokens/theme/${theme}.json`,

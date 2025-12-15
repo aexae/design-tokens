@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "build.mjs"
+    "build": "node build.mjs"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.6.12",
