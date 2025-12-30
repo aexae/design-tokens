@@ -6,9 +6,13 @@ import fs from "node:fs";
 // Enregistre tous les transforms/format du plugin Tokens Studio
 register(StyleDictionary);
 
-// Génère les tokens de base
+// ✅ Génère les tokens de base
 const baseSD = new StyleDictionary(
   {
+    log: {
+      verbosity: "verbose",
+      warnings: "warn",
+    },
     source: ["tokens/base/**/*.json"],
     platforms: {
       scss: {
@@ -23,22 +27,33 @@ const baseSD = new StyleDictionary(
       },
     },
   },
-  { verbosity: "verbose" } // verbose errors
+  { verbosity: "verbose" }
 );
+
 await baseSD.cleanAllPlatforms();
 await baseSD.buildAllPlatforms();
 
-// Charger le fichier composants
-const componentsPath = "./tokens/components/tokens.json";
-const componentTokens = JSON.parse(fs.readFileSync(componentsPath, "utf-8"));
+// 🔍 Charge le fichier de composants
+const componentTokens = JSON.parse(
+  fs.readFileSync("./tokens/components/tokens.json", "utf-8")
+);
+
+// 🧩 Récupère les noms de composants de premier niveau (ex: button, avatar...)
 const components = Object.keys(componentTokens);
 
 // Pour chaque thème et chaque composant, génère un fichier SCSS filtré
 for (const theme of ["light", "dark"]) {
   for (const component of components) {
     const sd = new StyleDictionary({
-      include: ["tokens/base/**/*.json"],
-      source: [`tokens/theme/${theme}.json`, componentsPath],
+      log: {
+        verbosity: "verbose",
+        warnings: "warn",
+      },
+      source: [
+        "tokens/base/**/*.json",
+        `tokens/theme/${theme}.json`,
+        "tokens/components/tokens.json",
+      ],
       platforms: {
         scss: {
           transformGroup: transformGroups.scss,
