@@ -2,6 +2,7 @@ import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
 import { transformGroups, formats } from "style-dictionary/enums";
 import fs from "node:fs";
+import { generateTokens } from "./scripts/generate-tokens";
 
 // Enregistre tous les transforms/format du plugin Tokens Studio
 register(StyleDictionary);
@@ -17,7 +18,7 @@ const baseSD = new StyleDictionary(
     platforms: {
       scss: {
         transformGroup: transformGroups.scss,
-        buildPath: "./dist/",
+        buildPath: "./build/scss/",
         files: [
           {
             destination: "base.scss",
@@ -57,7 +58,7 @@ for (const theme of ["light", "dark"]) {
       platforms: {
         scss: {
           transformGroup: transformGroups.scss,
-          buildPath: "./dist/",
+          buildPath: "./build/scss/",
           files: components.map((component) => ({
             destination: `${component}.${theme}.scss`,
             format: formats.scssVariables,
@@ -75,3 +76,6 @@ for (const theme of ["light", "dark"]) {
     await sd.buildAllPlatforms();
   }
 }
+// transform SCSS to TS
+generateTokens();
+
