@@ -1,4 +1,4 @@
-# nax-style-dictionary
+# style-dictionary
 
 **Bac à sable pour expérimenter avec [Style Dictionary](https://amzn.github.io/style-dictionary/)** avant de l’intégrer au projet **Comète**.
 

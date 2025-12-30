@@ -3,7 +3,7 @@ import { register } from "@tokens-studio/sd-transforms";
 import { transformGroups, formats } from "style-dictionary/enums";
 import fs from "node:fs";
 
-// 🔁 Enregistre tous les transforms/format du plugin Tokens Studio
+// Enregistre tous les transforms/format du plugin Tokens Studio
 register(StyleDictionary);
 
 // ✅ Génère les tokens de base
@@ -41,7 +41,7 @@ const componentTokens = JSON.parse(
 // 🧩 Récupère les noms de composants de premier niveau (ex: button, avatar...)
 const components = Object.keys(componentTokens);
 
-// 🔁 Pour chaque thème et chaque composant, génère un fichier SCSS filtré
+// Pour chaque thème et chaque composant, génère un fichier SCSS filtré
 for (const theme of ["light", "dark"]) {
   for (const component of components) {
     const sd = new StyleDictionary({
@@ -58,14 +58,15 @@ for (const theme of ["light", "dark"]) {
         scss: {
           transformGroup: transformGroups.scss,
           buildPath: "./dist/",
-          files: [
-            {
-              destination: `${component}.${theme}.scss`,
-              format: formats.scssVariables,
-              // 🔍 Filtre uniquement les tokens commençant par le nom du composant
-              filter: (token) => token.path[0] === component,
-            },
-          ],
+          files: components.map((component) => ({
+            destination: `${component}.${theme}.scss`,
+            format: formats.scssVariables,
+            // filtre composant + thème pour éviter les collisions
+            filter: (t) =>
+              t.path[0] === component &&
+              // Tokens Studio exporte souvent un marqueur de mode
+              (t.$extensions?.mode === theme || !t.$extensions?.mode),
+          })),
         },
       },
     });
