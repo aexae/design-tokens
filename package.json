@@ -5,6 +5,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "npx tsx build.ts && tsup",
     "generate:tokens": "npx tsx scripts/generate-tokens.ts",
