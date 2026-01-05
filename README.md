@@ -15,7 +15,7 @@ RM : la version gratuite du plugin Figma `Token Studio`est restreinte.
 npm install
 
 # Build des tokens
-node build.mjs
+npx tsx build.ts
 ```
 
 ## Structure du projet
