@@ -1,6 +1,6 @@
 {
   "name": "@aexae/design-tokens",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "files": [
     "dist"
@@ -9,9 +9,9 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "npx tsx build.ts && tsup",
-    "generate:tokens": "npx tsx scripts/generate-tokens.ts",
+    "build": "npx tsx build.ts && tsup && pnpm pack",
     "pack": "npm pack"
+
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.6.12",

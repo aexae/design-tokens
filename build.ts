@@ -1,71 +1,81 @@
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
-import { transformGroups } from "style-dictionary/enums";
-import { existsSync, readFileSync, mkdirSync } from "fs";
+import { transformGroups, formats } from "style-dictionary/enums";
+import fs from "node:fs";
+import { generateTokens } from "./scripts/generate-tokens";
 
-// Enregistre les transforms Tokens Studio
+// Enregistre tous les transforms/format du plugin Tokens Studio
 register(StyleDictionary);
 
-// Ajoute un format TypeScript personnalisé
-StyleDictionary.registerFormat({
-  name: "typescript/es6",
-  format: ({ dictionary }) => {
-    const tokens = JSON.stringify(dictionary.tokens, null, 2);
-    return `export const tokens = ${tokens} as const;\n`;
-  },
-});
-
-// ✅ Génère les tokens de base (optionnel en TS, mais tu peux l’adapter)
-// On le saute ici car on se concentre sur composants + thèmes
-
-// 🔍 Charge le fichier de composants
-const componentTokensPath = "./tokens/components/tokens.json";
-if (!existsSync(componentTokensPath)) {
-  throw new Error(`Fichier de composants introuvable : ${componentTokensPath}`);
-}
-const componentTokens = JSON.parse(readFileSync(componentTokensPath, "utf-8"));
-const components = Object.keys(componentTokens);
-
-// 🎨 Génère un fichier TS par composant + thème
-for (const theme of ["light", "dark"]) {
-  const sd = new StyleDictionary({
+// ✅ Génère les tokens de base
+const baseSD = new StyleDictionary(
+  {
     log: {
       verbosity: "verbose",
       warnings: "warn",
     },
-    source: [
-      "tokens/base/**/*.json",
-      `tokens/theme/${theme}.json`,
-      "tokens/components/tokens.json",
-    ],
+    source: ["tokens/base/**/*.json"],
     platforms: {
-      ts: {
-        transformGroup: transformGroups.js, // ou `js` selon les tokens, `scss` n’est pas adapté pour TS
-        buildPath: "./build/tokens/",
-        files: components.map((component) => ({
-          destination: `${component}.${theme}.ts`,
-          format: "typescript/es6",
-          filter: (token) => {
-            // Le chemin du token commence par le nom du composant
-            if (token.path[0] !== component) return false;
-            // Respecte le mode/thème si spécifié
-            const mode = token.$extensions?.mode;
-            return !mode || mode === theme;
+      scss: {
+        transformGroup: transformGroups.scss,
+        buildPath: "./build/scss/",
+        files: [
+          {
+            destination: "base.scss",
+            format: formats.scssVariables,
           },
-        })),
+        ],
       },
     },
-  });
+  },
+  { verbosity: "verbose" }
+);
 
-  // Assure-toi que le dossier de sortie existe
-  const buildPath = "./build/tokens/";
-  if (!existsSync(buildPath)) {
-    mkdirSync(buildPath, { recursive: true });
+await baseSD.cleanAllPlatforms();
+await baseSD.buildAllPlatforms();
+
+// 🔍 Charge le fichier de composants
+const componentTokens = JSON.parse(
+  fs.readFileSync("./tokens/components/tokens.json", "utf-8")
+);
+
+// 🧩 Récupère les noms de composants de premier niveau (ex: button, avatar...)
+const components = Object.keys(componentTokens);
+
+// Pour chaque thème et chaque composant, génère un fichier SCSS filtré
+for (const theme of ["light", "dark"]) {
+  for (const component of components) {
+    const sd = new StyleDictionary({
+      log: {
+        verbosity: "verbose",
+        warnings: "warn",
+      },
+      source: [
+        "tokens/base/**/*.json",
+        `tokens/theme/${theme}.json`,
+        "tokens/components/tokens.json",
+      ],
+      platforms: {
+        scss: {
+          transformGroup: transformGroups.scss,
+          buildPath: "./build/scss/",
+          files: components.map((component) => ({
+            destination: `${component}.${theme}.scss`,
+            format: formats.scssVariables,
+            // filtre composant + thème pour éviter les collisions
+            filter: (t) =>
+              t.path[0] === component &&
+              // Tokens Studio exporte souvent un marqueur de mode
+              (t.$extensions?.mode === theme || !t.$extensions?.mode),
+          })),
+        },
+      },
+    });
+
+    await sd.cleanAllPlatforms();
+    await sd.buildAllPlatforms();
   }
-
-  await sd.cleanAllPlatforms();
-  await sd.buildAllPlatforms();
 }
+// transform SCSS to TS
+generateTokens();
 
-// Optionnel : appeler generateTokens() si c’est un post-processing supplémentaire
-// await generateTokens();
