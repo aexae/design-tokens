@@ -1050,13 +1050,8 @@
       "modal-dialog.modalheader.color.background.selected.press": "6dc4a2599f7562b69668b7d3de264215427f6be8",
       "modal-dialog.modalheader.text.primary": "7762410d1dc70380218a0c7ef2253b18a2d62a5c",
       "modal-dialog.modalheader.border.selected": "62d596f675be74434296e05cb6bf2b14f82894d4",
-      "modal-dialog.modalheader.gap.xsmall": "f0cf2ada483d59ccff5df627933ec706f9395f14",
-      "modal-dialog.modalheader.gap.medium": "259b679545d96150d8df8819ecea7480dde491b6",
-      "modal-dialog.modalheader.spacing.small": "8d7b9f6b9accc16253416464eeffde427df09e65",
-      "modal-dialog.modalheader.spacing.medium": "8252bc6fdc895591add179b8ee2e702f49360ae4",
       "modal-dialog.border.default": "3649e738918d6e3b154e63d208f278286d1e2b50",
       "modal-dialog.section.spacing.default": "94060509a0db99a39d1d99afd0cc92ca227d5396",
-      "modal-dialog.modalbody.spacing.default": "5afb5b3a66bfd3c14ee091b493080d42af09d397",
       "modal-dialog.modalheader.color.background.disabled.default": "11b1c3faa919e6947b5d335d7648096eda94e603"
     },
     "$figmaModeId": "2719:1",
