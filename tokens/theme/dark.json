@@ -130,6 +130,14 @@
           "default": {
             "$type": "color",
             "$value": "{porcelain.950}"
+          },
+          "hovered": {
+            "$type": "color",
+            "$value": "{porcelain.900}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{porcelain.800}"
           }
         },
         "overlay": {
