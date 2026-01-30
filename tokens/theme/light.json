@@ -54,15 +54,15 @@
       "subtlest": {
         "default": {
           "$type": "color",
-          "$value": "{comete.biscay.50}"
+          "$value": "{comete.biscay.100}"
         },
         "hovered": {
           "$type": "color",
-          "$value": "{comete.biscay.100}"
+          "$value": "{comete.biscay.200}"
         },
         "pressed": {
           "$type": "color",
-          "$value": "{comete.biscay.200}"
+          "$value": "{comete.biscay.300}"
         }
       },
       "bold": {
@@ -144,6 +144,26 @@
           "default": {
             "$type": "color",
             "$value": "{white.100}"
+          },
+          "critical": {
+            "$type": "color",
+            "$value": "{red.50}"
+          },
+          "success": {
+            "$type": "color",
+            "$value": "{salem.50}"
+          },
+          "accent": {
+            "$type": "color",
+            "$value": "{blue-marguerite.50}"
+          },
+          "information": {
+            "$type": "color",
+            "$value": "{green-vogue.50}"
+          },
+          "warning": {
+            "$type": "color",
+            "$value": "{supernova.50}"
           }
         },
         "raise": {
@@ -154,6 +174,10 @@
         }
       },
       "critical": {
+        "$type": "color",
+        "$value": "{red.50}"
+      },
+      "DEPRECATED-critical": {
         "$type": "color",
         "$value": "{red.50}"
       }
@@ -236,15 +260,15 @@
       "subtlest": {
         "pressed": {
           "$type": "color",
-          "$value": "{red.200}"
+          "$value": "{red.300}"
         },
         "hovered": {
           "$type": "color",
-          "$value": "{red.100}"
+          "$value": "{red.200}"
         },
         "default": {
           "$type": "color",
-          "$value": "{red.50}"
+          "$value": "{red.100}"
         }
       }
     },
@@ -296,15 +320,15 @@
       "subtlest": {
         "default": {
           "$type": "color",
-          "$value": "{comete.biscay.50}"
+          "$value": "{comete.biscay.100}"
         },
         "hovered": {
           "$type": "color",
-          "$value": "{comete.biscay.100}"
+          "$value": "{comete.biscay.200}"
         },
         "pressed": {
           "$type": "color",
-          "$value": "{comete.biscay.200}"
+          "$value": "{comete.biscay.300}"
         }
       }
     },
@@ -330,11 +354,11 @@
         },
         "hovered": {
           "$type": "color",
-          "$value": "{blue-marguerite.100}"
+          "$value": "{blue-marguerite.200}"
         },
         "default": {
           "$type": "color",
-          "$value": "{blue-marguerite.50}"
+          "$value": "{blue-marguerite.100}"
         }
       }
     },
