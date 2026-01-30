@@ -566,7 +566,7 @@
       "$type": "color",
       "$value": "{comete.biscay.700}"
     },
-    "selected inverted": {
+    "selected-inverted": {
       "$type": "color",
       "$value": "{green-vogue.200}"
     },
