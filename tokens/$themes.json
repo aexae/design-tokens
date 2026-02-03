@@ -1187,7 +1187,6 @@
       "border.brand": "449c03660088ce74eab5d955c184fd988af09690",
       "text.brand": "f7d30e7c3b22370e3f0500b90957877f7bc259cb",
       "background.alpha.default": "cd8a8e96b954aefb8d24d147ec180fb4b42ea302",
-      "border.selected inverted": "848a949a7d74ebbfb14e1c28350d07937d049323",
       "border.focus-inverted": "3ba7daba356271b4d058fb9c6166950c6748a38f",
       "border.focus": "9b84501419b29d6f94c142ccd10fa879dd30c10d",
       "border.neutral": "3f7c95d6d710e50d7ba32eeec2d318d0cb8916e1",
@@ -1202,7 +1201,8 @@
       "border.inverted": "ae8c0a584df1fd70f81fa64a19f46566f625e243",
       "blanket.default": "e8f2836fe2e6aabd1c8e1cd230f0a807b8228a9f",
       "interaction.hovered": "0efd2d5210382d8bc0f99e2583c7c0d0ec2f7a3e",
-      "interaction.pressed": "fb1fedcb70adcbf5559f1739ea1c19876b402211"
+      "interaction.pressed": "fb1fedcb70adcbf5559f1739ea1c19876b402211",
+      "border.selected-inverted": "848a949a7d74ebbfb14e1c28350d07937d049323"
     },
     "$figmaModeId": "390:0",
     "$figmaCollectionId": "VariableCollectionId:390:7458"
@@ -1341,7 +1341,6 @@
       "border.brand": "449c03660088ce74eab5d955c184fd988af09690",
       "text.brand": "f7d30e7c3b22370e3f0500b90957877f7bc259cb",
       "background.alpha.default": "cd8a8e96b954aefb8d24d147ec180fb4b42ea302",
-      "border.selected inverted": "848a949a7d74ebbfb14e1c28350d07937d049323",
       "border.focus-inverted": "3ba7daba356271b4d058fb9c6166950c6748a38f",
       "border.focus": "9b84501419b29d6f94c142ccd10fa879dd30c10d",
       "border.neutral": "3f7c95d6d710e50d7ba32eeec2d318d0cb8916e1",
@@ -1356,7 +1355,8 @@
       "border.inverted": "ae8c0a584df1fd70f81fa64a19f46566f625e243",
       "blanket.default": "e8f2836fe2e6aabd1c8e1cd230f0a807b8228a9f",
       "interaction.hovered": "0efd2d5210382d8bc0f99e2583c7c0d0ec2f7a3e",
-      "interaction.pressed": "fb1fedcb70adcbf5559f1739ea1c19876b402211"
+      "interaction.pressed": "fb1fedcb70adcbf5559f1739ea1c19876b402211",
+      "border.selected-inverted": "848a949a7d74ebbfb14e1c28350d07937d049323"
     },
     "$figmaModeId": "390:1",
     "$figmaCollectionId": "VariableCollectionId:390:7458"
