@@ -1,15 +1,14 @@
 {
   "tokenSetOrder": [
-    "global",
     "base/color/tokens",
+    "base/brand/tokens",
+    "base/sizing/tokens",
+    "base/breakpoints/tokens",
+    "base/spacing/tokens",
+    "base/radius/tokens",
+    "base/typography/tokens",
     "components/tokens",
     "theme/light",
-    "theme/dark",
-    "base/brand/tokens",
-    "base/typography/tokens",
-    "base/radius/tokens",
-    "base/sizing/tokens",
-    "base/spacing/tokens",
-    "base/breakpoints/tokens"
+    "theme/dark"
   ]
 }
