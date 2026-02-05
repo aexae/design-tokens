@@ -12,10 +12,10 @@ RM : la version gratuite du plugin Figma `Token Studio`est restreinte.
 
 ```bash
 # Installation des dépendances
-npm install
+pnpm i
 
 # Build des tokens
-npx tsx build.ts
+pnpm build
 ```
 
 ## Structure du projet
