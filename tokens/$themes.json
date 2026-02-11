@@ -272,9 +272,7 @@
     "id": "base/typography-tokens",
     "name": "tokens",
     "group": "base/typography",
-    "selectedTokenSets": {
-      "base/typography/tokens": "enabled"
-    },
+    "selectedTokenSets": {},
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "font-weight.regular": "0ee93b09f7f9eef2230819e17f3f03d357cfc31a",
